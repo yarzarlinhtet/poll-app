@@ -11,4 +11,4 @@ if(store.getters.token){
 
 export {
     api,
-}
+} 
