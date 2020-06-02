@@ -9,8 +9,7 @@ require('./bootstrap');
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from './route';
-
-
+import store from './store';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -40,4 +39,5 @@ Vue.component('index', require('./components/index.vue').default);
 const app = new Vue({
     el: '#app',
     router,
+    store,
 });
