@@ -26,7 +26,7 @@ class UserController extends Controller
             ]);
         }
     
-        return $user->createToken($request->device_name)->plainTextToken;
+        return $this->respondWithToken($user->createToken($request->device_name)->plainTextToken, $user);
     }
 
     public function me(Request $request)
@@ -37,5 +37,15 @@ class UserController extends Controller
     public function logout(Request $request)
     {
         return $request->user()->currentAccessToken()->delete();
+    }
+
+    protected function respondWithToken($token, $user)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'user' => $user,
+            'token_type' => 'bearer',
+            'expires_in' =>  60
+        ]);
     }
 }

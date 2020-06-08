@@ -33,7 +33,7 @@ export const getters = {
     token(state) {
         if(state.currentUser && state.currentUser.token)
         {
-            return state.currentUser.token;
+            return `Bearer ${state.currentUser.token}`;
         }
         return false;
     }
@@ -50,7 +50,7 @@ export const mutations = {
         state.loading = false;
         state.currentUser = Object.assign({}, payload.user, { token: payload.access_token });
         // localStorage.setItem("user", JSON.stringify(state.currentUser));
-        setItem("user"); //STORE_NAME
+        setItem("user",  state.currentUser); //STORE_NAME
     },
     loginFailed(state, payload) {
         state.loading = false;
