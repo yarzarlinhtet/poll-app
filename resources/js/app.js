@@ -10,6 +10,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from './route';
 import store from './store';
+import i18n from './local';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -35,9 +36,10 @@ Vue.component('index', require('./components/index.vue').default);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
+// Vue.use(i18n);
 const app = new Vue({
     el: '#app',
     router,
     store,
+    i18n,
 });
